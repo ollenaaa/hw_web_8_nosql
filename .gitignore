@@ -3,3 +3,4 @@ v_env
 __pycache__
 second_task/__pycache__
 first_task/__pycache__
+.DS_Store
