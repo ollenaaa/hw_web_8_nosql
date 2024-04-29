@@ -46,32 +46,26 @@ def search_quotes_by_author(name, task):
     if task == 'main':
         author = Author.objects(fullname=name).first()
         quote = Quote.objects(author=author)
-        print(f'Function call')
         return quote
     
     elif task == 'additional':
         authors = Author.objects(fullname__istartswith=f'{name}')
         quotes = Quote.objects(author__in=authors)
-        print(f'Function call')
         return quotes
     
 @cache
 def search_quotes_by_tag(tag, task):
     if task == 'main':
         quotes = Quote.objects(tags=tag)
-        print(f'Function call')
         return quotes
     
     elif task == 'additional':
         quotes = Quote.objects(tags__istartswith=f'{tag}')
-        print(f'Function call')
         return quotes
     
 @cache
 def search_quotes_by_tags(tags):
-    query = {"tags": {"$all": tags}}
     quotes = Quote.objects(tags__name__in=tags)
-    print(f'Function call')
     return quotes
 
 

@@ -6,8 +6,7 @@ from email_model import Contact
 connect(db='Email', host='127.0.0.1', port=27017)
 
 credentials = pika.PlainCredentials('guest', 'guest')
-connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials))
+connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials))
 channel = connection.channel()
 
 channel.exchange_declare(exchange='task_mock', exchange_type='direct')
